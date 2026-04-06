@@ -78,7 +78,7 @@ export const PraiseBenefits = () => {
                   fontFamily: "var(--font-figtree), Figtree",
                 }}
               >
-                &ldquo;Most of my time is spent gathering and cleaning data—not analyzing it. Praise changes that.&rdquo;
+                &ldquo;Most of my time is spent gathering and cleaning data—not analyzing it.&rdquo;
               </p>
             </div>
             <div className="flex items-center gap-4">
