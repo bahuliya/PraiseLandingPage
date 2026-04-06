@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import { Code2, Webhook, Database, ArrowRight } from "lucide-react"
+import Image from "next/image"
 
 const apiFeatures = [
   {
