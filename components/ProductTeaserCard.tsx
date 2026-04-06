@@ -24,7 +24,7 @@ export const ProductTeaserCard = (props: ProductTeaserCardProps) => {
     subheadline = "Praise automates the repetitive parts of your workflow so you can focus on what actually matters—your expertise.",
     description = "",
     videoSrc = "",
-    posterSrc = "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=800&fit=crop",
+    posterSrc = "https://images.unsplash.com/photo-1448630360428-65456885c650?w=800&h=800&fit=crop",
     primaryButtonText = "Join the Free Beta",
     primaryButtonHref = "#contact",
     secondaryButtonText = "Learn More",
