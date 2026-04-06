@@ -4,6 +4,7 @@ import { BankingScaleHero } from "@/components/BankingScaleHero"
 import { IntegrationCarousel } from "@/components/IntegrationCarousel"
 import { PraiseFeatures } from "@/components/PraiseFeatures"
 import { PraiseBenefits } from "@/components/PraiseBenefits"
+import { APISection } from "@/components/APISection"
 import { FAQSection } from "@/components/FAQSection"
 import { PraiseCTA } from "@/components/PraiseCTA"
 import { Footer } from "@/components/Footer"
@@ -19,6 +20,9 @@ export default function Home() {
         <PraiseFeatures />
       </section>
       <PraiseBenefits />
+      <section id="api">
+        <APISection />
+      </section>
       <section id="faq">
         <FAQSection />
       </section>
