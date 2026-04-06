@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" width="200" height="50">
+  <rect width="200" height="50" fill="white" fill-opacity="0"/>
+  <text x="10" y="35" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#E85D04">Core</text>
+  <text x="80" y="35" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#1A1A2E">Logic</text>
+</svg>
