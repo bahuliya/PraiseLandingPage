@@ -118,33 +118,48 @@ export const APISection = () => {
             </a>
           </motion.div>
 
-          {/* Right Column - Code Example */}
+          {/* Right Column - Image + Code Example */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-            className="bg-[#1a1a2e] rounded-[24px] p-6 shadow-xl"
+            className="space-y-4"
           >
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
-              <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
-              <div className="w-3 h-3 rounded-full bg-[#27ca3f]" />
-              <span
-                className="ml-3 text-sm text-[#888]"
-                style={{ fontFamily: "var(--font-mono), monospace" }}
-              >
-                example.js
-              </span>
+            {/* Real Estate Image Box */}
+            <div className="bg-[#d4e7f0] rounded-[24px] overflow-hidden shadow-lg h-80">
+              <Image
+                src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&h=500&fit=crop"
+                alt="Modern residential real estate property"
+                width={600}
+                height={500}
+                className="w-full h-full object-cover"
+                priority
+              />
             </div>
-            <pre className="overflow-x-auto">
-              <code
-                className="text-sm leading-relaxed text-[#e4e4e7]"
-                style={{ fontFamily: "var(--font-mono), monospace" }}
-              >
-                {codeExample}
-              </code>
-            </pre>
+
+            {/* Code Example */}
+            <div className="bg-[#1a1a2e] rounded-[24px] p-6 shadow-xl">
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
+                <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
+                <div className="w-3 h-3 rounded-full bg-[#27ca3f]" />
+                <span
+                  className="ml-3 text-sm text-[#888]"
+                  style={{ fontFamily: "var(--font-mono), monospace" }}
+                >
+                  example.js
+                </span>
+              </div>
+              <pre className="overflow-x-auto">
+                <code
+                  className="text-sm leading-relaxed text-[#e4e4e7]"
+                  style={{ fontFamily: "var(--font-mono), monospace" }}
+                >
+                  {codeExample}
+                </code>
+              </pre>
+            </div>
           </motion.div>
         </div>
 
