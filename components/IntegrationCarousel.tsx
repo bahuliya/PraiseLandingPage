@@ -1,6 +1,5 @@
 "use client"
 
-import { useEffect, useRef } from "react"
 import { motion } from "framer-motion"
 type IntegrationApp = {
   name: string
@@ -124,40 +123,6 @@ export const IntegrationCarousel = ({
   topRowApps = defaultTopRowApps,
   bottomRowApps = defaultBottomRowApps,
 }: IntegrationCarouselProps) => {
-  const topRowRef = useRef<HTMLDivElement>(null)
-  const bottomRowRef = useRef<HTMLDivElement>(null)
-  useEffect(() => {
-    let topAnimationId: number
-    let bottomAnimationId: number
-    let topPosition = 0
-    let bottomPosition = 0
-    const animateTopRow = () => {
-      if (topRowRef.current) {
-        topPosition -= 0.5
-        if (Math.abs(topPosition) >= topRowRef.current.scrollWidth / 2) {
-          topPosition = 0
-        }
-        topRowRef.current.style.transform = `translateX(${topPosition}px)`
-      }
-      topAnimationId = requestAnimationFrame(animateTopRow)
-    }
-    const animateBottomRow = () => {
-      if (bottomRowRef.current) {
-        bottomPosition -= 0.65
-        if (Math.abs(bottomPosition) >= bottomRowRef.current.scrollWidth / 2) {
-          bottomPosition = 0
-        }
-        bottomRowRef.current.style.transform = `translateX(${bottomPosition}px)`
-      }
-      bottomAnimationId = requestAnimationFrame(animateBottomRow)
-    }
-    topAnimationId = requestAnimationFrame(animateTopRow)
-    bottomAnimationId = requestAnimationFrame(animateBottomRow)
-    return () => {
-      cancelAnimationFrame(topAnimationId)
-      cancelAnimationFrame(bottomAnimationId)
-    }
-  }, [])
 
   // @return
   return (
@@ -214,11 +179,7 @@ export const IntegrationCarousel = ({
 
       <div className="h-[268px] -mt-6 mb-0 pb-0 relative overflow-hidden">
         <div
-          ref={topRowRef}
-          className="flex items-start gap-6 absolute top-6 whitespace-nowrap"
-          style={{
-            willChange: "transform",
-          }}
+          className="flex items-start gap-6 absolute top-6 whitespace-nowrap animate-scroll-left"
         >
           {[...topRowApps, ...topRowApps].map((app, index) => (
             <div
@@ -230,7 +191,7 @@ export const IntegrationCarousel = ({
                   "rgba(0, 0, 0, 0.04) 0px 0px 0px 1px, rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.04) 0px 3px 3px -1.4px, rgba(0, 0, 0, 0.04) 0px 6px 6px -3px, rgba(0, 0, 0, 0.04) 0px 12px 12px -6px, rgba(0, 0, 0, 0.04) 0px 12px 12px -12px",
               }}
             >
-              <img src={app.logo || "/placeholder.svg"} alt={app.name} className="w-16 h-12 block object-contain" />
+              <img src={app.logo || "/placeholder.svg"} alt={app.name} loading="lazy" className="w-16 h-12 block object-contain" />
             </div>
           ))}
         </div>
@@ -250,11 +211,7 @@ export const IntegrationCarousel = ({
         />
 
         <div
-          ref={bottomRowRef}
-          className="flex items-start gap-6 absolute top-[148px] whitespace-nowrap"
-          style={{
-            willChange: "transform",
-          }}
+          className="flex items-start gap-6 absolute top-[148px] whitespace-nowrap animate-scroll-left-slow"
         >
           {[...bottomRowApps, ...bottomRowApps].map((app, index) => (
             <div
@@ -266,7 +223,7 @@ export const IntegrationCarousel = ({
                   "rgba(0, 0, 0, 0.04) 0px 0px 0px 1px, rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.04) 0px 3px 3px -1.4px, rgba(0, 0, 0, 0.04) 0px 6px 6px -3px, rgba(0, 0, 0, 0.04) 0px 12px 12px -6px, rgba(0, 0, 0, 0.04) 0px 12px 12px -12px",
               }}
             >
-              <img src={app.logo || "/placeholder.svg"} alt={app.name} className="w-16 h-12 block object-contain" />
+              <img src={app.logo || "/placeholder.svg"} alt={app.name} loading="lazy" className="w-16 h-12 block object-contain" />
             </div>
           ))}
         </div>

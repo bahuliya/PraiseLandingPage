@@ -1,6 +1,7 @@
 "use client"
 import { motion } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
+import Image from "next/image"
 type ProductTeaserCardProps = {
   dailyVolume?: string
   dailyVolumeLabel?: string
@@ -157,15 +158,9 @@ export const ProductTeaserCard = (props: ProductTeaserCardProps) => {
               ease: [0.645, 0.045, 0.355, 1],
               delay: 0.2,
             }}
-            className="col-span-12 lg:col-span-6 bg-[#156d95]/10 rounded-[40px] flex justify-center items-center aspect-square overflow-hidden"
-            style={{
-              backgroundImage: posterSrc ? `url(${posterSrc})` : undefined,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-            }}
+            className="col-span-12 lg:col-span-6 bg-[#156d95]/10 rounded-[40px] flex justify-center items-center aspect-square overflow-hidden relative"
           >
-            {videoSrc && (
+            {videoSrc ? (
               <video
                 src={videoSrc}
                 autoPlay
@@ -175,7 +170,16 @@ export const ProductTeaserCard = (props: ProductTeaserCardProps) => {
                 poster={posterSrc || undefined}
                 className="block w-full h-full object-cover"
               />
-            )}
+            ) : posterSrc ? (
+              <Image
+                src={posterSrc}
+                alt="Product preview"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                priority
+              />
+            ) : null}
           </motion.div>
         </div>
       </div>

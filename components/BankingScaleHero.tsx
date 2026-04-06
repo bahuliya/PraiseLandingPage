@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useMemo } from "react"
 import { motion } from "framer-motion"
 import { ArrowRight } from "lucide-react"
 type StatItem = {
@@ -38,11 +38,13 @@ const stats: StatItem[] = [
     delay: 0.6,
   },
 ]
+// Generate data points once at module level to avoid recreating
 const generateDataPoints = (): DataPoint[] => {
   const points: DataPoint[] = []
   const baseLeft = 1
-  const spacing = 32
-  for (let i = 0; i < 50; i++) {
+  const spacing = 40 // Increased spacing, fewer points
+  // Reduced from 50 to 25 points for better performance
+  for (let i = 0; i < 25; i++) {
     const direction = i % 2 === 0 ? "down" : "up"
     const height = Math.floor(Math.random() * 120) + 88
     const top = direction === "down" ? Math.random() * 150 + 250 : Math.random() * 100 - 80
@@ -52,7 +54,7 @@ const generateDataPoints = (): DataPoint[] => {
       top,
       height,
       direction,
-      delay: i * 0.035,
+      delay: i * 0.05, // Slightly slower stagger
     })
   }
   return points
@@ -61,8 +63,11 @@ const generateDataPoints = (): DataPoint[] => {
 // @component: BankingScaleHero
 export const BankingScaleHero = () => {
   const [isVisible, setIsVisible] = useState(false)
-  const [dataPoints] = useState<DataPoint[]>(generateDataPoints())
   const [typingComplete, setTypingComplete] = useState(false)
+  
+  // Memoize data points to prevent regeneration on re-renders
+  const dataPoints = useMemo(() => generateDataPoints(), [])
+  
   useEffect(() => {
     setIsVisible(true)
     const timer = setTimeout(() => setTypingComplete(true), 1000)
